@@ -19,10 +19,9 @@
     <body>
         <div id="header" class="no-wrap no-print" <?= $this->headerAttributes() ?>>
             <div id="label">
-                <a href="<?= $this->basePath('/') ?>" id="logo"></a>
-
-                <div id="label-client"><?= $this->option('client.name.full') ?></div>
-                <div id="label-service"><?= $this->option('service.name.full') ?></div>
+                <a href="<?= $this->basePath('/') ?>" id="logo" style="display:none;"></a>
+                <div id="label-client"><a href="<?= $this->basePath('/') ?>"><?= $this->option('client.name.full') ?></a></div>
+                <div id="label-service"><a href="<?= $this->basePath('/') ?>"><?= $this->option('service.name.full') ?></a></div>
 
                 <?php if ($this->option('service.branding', 'true') == 'true'): ?>
                     <div id="branding">&raquo; <?= sprintf($this->t('Powered by %s'), '<a href="' . $this->option('service.branding.website') .'" target="_blank">' . $this->option('service.branding.name') . '</a>') ?></div>
@@ -31,6 +30,7 @@
                 <?php endif; ?>
             </div>
 
+            <!--
             <div id="topbar">
                 <?= $this->headerLocaleChoice() ?>
 
@@ -80,6 +80,7 @@
 
                 <div id="topbar-separator" class="responsive-pass-4"></div>
             </div>
+            -->
         </div>
 
         <div id="content">

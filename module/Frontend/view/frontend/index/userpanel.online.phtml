@@ -1,22 +1,22 @@
 <table style="height: 100%;">
     <tr>
-        <td class="responsive-pass-4" style="padding-right: 12px; border-right: solid 1px #CCC;">
+        <td class="responsive-pass-4 userpanel-cell">
             <div id="userpanel-status" class="no-wrap">
                 <?= sprintf($this->t('Online as %s'), $this->user->need('alias')) ?>
             </div>
         </td>
 
-        <td class="responsive-pass-4" style="padding-right: 12px;"></td>
+        <td class="responsive-pass-4 userpanel-cell"></td>
 
         <?php if ($this->user->can('admin.see-menu')): ?>
 
             <?php $this->headScript()->appendFile($this->basePath('js/controller/frontend/index.admin.min.js')) ?>
 
-            <td class="responsive-pass-4" style="padding-right: 12px; border-right: solid 1px #CCC;">
+            <td class="responsive-pass-4 userpanel-cell">
                 <a href="<?= $this->url('backend') ?>" id="admin-menu-link" class="default-button"><span class="symbolic symbolic-config"><?= $this->t('Administration') ?></span></a>
             </td>
 
-            <td class="responsive-pass-4" style="padding-right: 12px;"></td>
+            <td class="responsive-pass-4 userpanel-cell"></td>
 
         <?php endif; ?>
 
@@ -28,12 +28,14 @@
             <a href="<?= $this->url('user/settings') ?>" class="default-button"><span class="symbolic symbolic-user"><?= $this->t('My account') ?></span></a>
         </td>
 
-        <td style="padding-right: 12px;">
+        <td class="userpanel-cell">
             <a href="<?= $this->url('user/logout') ?>" class="default-button"><span class="symbolic symbolic-off"><?= $this->t('Logout') ?></span></a>
         </td>
 
-        <td style="padding-left: 12px; border-left: solid 1px #CCC;">
+        <!--
+        <td class="userpanel-cell">
             <a href="<?= $this->url('service/help') ?>" class="default-button" data-tooltip="<?= sprintf($this->t('Get additional %shelp and information%s'), '<b>', '</b>') ?>"><b>?</b></a>
         </td>
+        -->
     </tr>
 </table>

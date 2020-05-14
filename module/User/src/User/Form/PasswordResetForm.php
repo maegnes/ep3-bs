@@ -18,7 +18,7 @@ class PasswordResetForm extends Form
             'attributes' => array(
                 'id' => 'prf-pw1',
                 'class' => 'autofocus',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'New password',
@@ -34,7 +34,7 @@ class PasswordResetForm extends Form
             'type' => 'Password',
             'attributes' => array(
                 'id' => 'prf-pw2',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => ' ',

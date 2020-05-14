@@ -17,7 +17,7 @@ class UserForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'uf-firstname',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Firstname',
@@ -29,7 +29,7 @@ class UserForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'uf-lastname',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Lastname',
@@ -41,7 +41,7 @@ class UserForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'uf-email',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Email address',
@@ -56,7 +56,7 @@ class UserForm extends Form
             'type' => 'Password',
             'attributes' => array(
                 'id' => 'uf-pw',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Password',

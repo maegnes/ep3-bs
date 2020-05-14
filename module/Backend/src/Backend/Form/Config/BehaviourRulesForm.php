@@ -30,7 +30,7 @@ class BehaviourRulesForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'cf-terms-name',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Business terms (file name)',
@@ -56,7 +56,7 @@ class BehaviourRulesForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'cf-privacy-name',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Privacy policy (file name)',

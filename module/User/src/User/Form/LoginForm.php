@@ -18,7 +18,7 @@ class LoginForm extends Form
             'attributes' => array(
                 'id' => 'lf-email',
                 'class' => 'autofocus',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Email address',
@@ -33,7 +33,7 @@ class LoginForm extends Form
             'type' => 'Password',
             'attributes' => array(
                 'id' => 'lf-pw',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Password',

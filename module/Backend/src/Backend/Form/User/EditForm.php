@@ -44,7 +44,7 @@ class EditForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'euf-alias',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Alias',
@@ -86,7 +86,7 @@ class EditForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'euf-email',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Email address',
@@ -98,7 +98,7 @@ class EditForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'euf-pw',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'New password',
@@ -148,7 +148,7 @@ class EditForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'euf-street',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Street & Number',
@@ -184,7 +184,7 @@ class EditForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'euf-phone',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Phone number',
@@ -208,7 +208,7 @@ class EditForm extends Form
             'type' => 'Textarea',
             'attributes' => array(
                 'id' => 'euf-notes',
-                'style' => 'width: 250px; height: 48px;',
+                'style' => 'width: 200px; height: 48px;',
             ),
             'options' => array(
                 'label' => 'Notes',

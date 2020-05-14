@@ -72,7 +72,7 @@ class EditInfoForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'cf-rules-document-name',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Rules (file name)',

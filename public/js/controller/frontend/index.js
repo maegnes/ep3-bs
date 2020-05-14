@@ -13,12 +13,12 @@
             messagesPanel.css({
                 "position": "absolute",
                 "z-index": 2048,
-                "min-width": 384
+                "min-width": 300
             }).position({
                 "my": "center top+24",
                 "at": "center top",
                 "of": calendar
-            }).delay(5000).fadeOut(3000, function() {
+            }).delay(2500).fadeOut(1000, function() {
                 $(this).remove();
             });
 

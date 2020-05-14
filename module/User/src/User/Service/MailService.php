@@ -33,8 +33,8 @@ class MailService extends AbstractService
         $toAddress = $recipient->need('email');
         $toName = $recipient->need('alias');
 
-        $text = sprintf("%s %s,\r\n\r\n%s\r\n\r\n%s,\r\n%s %s\r\n%s",
-            $this->t('Dear'), $toName, $text, $this->t('Sincerely'), $this->t("Your"), $fromName, $this->optionManager->need('service.website'));
+        $text = sprintf("%s %s,\r\n\r\n%s\r\n\r\n%s,\r\n%s %s",
+            $this->t('Dear'), $toName, $text, $this->t('Sincerely'), "Ihre", $fromName);
 
         $this->baseMailService->sendPlain($fromAddress, $fromName, $replyToAddress, $replyToName, $toAddress, $toName, $subject, $text, $attachments);
     }

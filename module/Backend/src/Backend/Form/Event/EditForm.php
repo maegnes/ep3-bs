@@ -136,7 +136,7 @@ class EditForm extends Form
             'type' => 'Textarea',
             'attributes' => array(
                 'id' => 'ef-notes',
-                'style' => 'width: 250px; height: 48px;',
+                'style' => 'width: 200px; height: 48px;',
             ),
             'options' => array(
                 'label' => 'Notes',

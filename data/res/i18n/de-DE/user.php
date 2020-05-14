@@ -31,10 +31,10 @@ return array(
     'A new user has registered to your %s. According to your configuration, this user will not be able to book %s until you manually activate him.'
         => 'Ein neuer Benutzer hat sich bei Ihrem %s registriert. Entsprechend Ihrer Einstellungen muss dieser Benutzer manuell aktiviert werden, bevor dieser %s buchen kann.',
 
-    'Your registration to the %s %s' => 'Ihre Registrierung beim %s %s',
+    'Your registration to the %s %s' => 'Ihre Registrierung bei der %s %s',
 
     "welcome to the %s %s!\r\n\r\nThank you for your registration to our service.\r\n\r\nBefore you can completely use your new user account to book spare %s online, you have to activate it by simply clicking the following link. That's all!\r\n\r\n%s"
-        => "herzlich Willkommen zum %s %s!\r\n\r\nVielen Dank für Ihre Registrierung für unser Angebot.\r\n\r\nBevor Sie nun freie %s online buchen können, müssen Sie nur noch folgende Internetseite besuchen um Ihr Benutzerkonto zu aktivieren und schon können Sie loslegen!\r\n\r\n%s",
+        => "herzlich Willkommen bei der %s %s!\r\n\r\nBevor Sie nun freie %s online buchen können, müssen Sie nur noch folgende Internetseite besuchen um Ihr Benutzerkonto zu aktivieren und schon können Sie loslegen!\r\n\r\n%s",
 
     'Your activation code seems invalid. Please try again.' => 'Ihr Aktivierungs-Code scheint ungültig zu sein. Bitte versuchen Sie es erneut.',
 
@@ -219,7 +219,7 @@ return array(
     'Welcome to our %s' => 'Willkommen zu unserem %s',
 
     'You probably guessed it: To use our service, that is to book spare %s online, you need to create your own user account first.'
-        => 'Sie haben es sicher schon vermutet: Um unser Angebot nutzen zu können, also um freie %s online buchen zu können, müssen Sie sich vorher ein eigenes Benutzerkonto auf Ihren Namen und Ihre E-Mail Adresse erstellen.',
+        => 'Um einen Platz buchen zu können, müssen Sie sich anhand Ihrer E-Mail Adresse ein Benutzerkonto anlegen.',
     'The registration is of course free of cost and nonbinding.' => 'Die Registrierung ist natürlich kostenlos und unverbindlich.',
 
     'We are very sorry, but the registration is currently not possible.' => 'Entschuldigung, aber die Registrierung ist derzeit nicht möglich.',

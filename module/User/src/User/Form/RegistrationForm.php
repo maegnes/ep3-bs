@@ -35,7 +35,7 @@ class RegistrationForm extends Form
             'attributes' => array(
                 'id' => 'rf-email1',
                 'class' => 'autofocus',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Email address',
@@ -51,7 +51,7 @@ class RegistrationForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'rf-email2',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => ' ',
@@ -64,7 +64,7 @@ class RegistrationForm extends Form
             'type' => 'Password',
             'attributes' => array(
                 'id' => 'rf-pw1',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Password',
@@ -80,7 +80,7 @@ class RegistrationForm extends Form
             'type' => 'Password',
             'attributes' => array(
                 'id' => 'rf-pw2',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => ' ',
@@ -179,7 +179,7 @@ class RegistrationForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'rf-phone',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Phone number',
@@ -272,7 +272,7 @@ class RegistrationForm extends Form
             'attributes' => array(
                 'value' => 'Complete registration',
                 'class' => 'default-button',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
         ));
 

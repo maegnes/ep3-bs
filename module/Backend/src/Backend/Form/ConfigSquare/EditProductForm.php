@@ -30,7 +30,7 @@ class EditProductForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'cf-name',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
             ),
             'options' => array(
                 'label' => 'Name',
@@ -55,7 +55,7 @@ class EditProductForm extends Form
             'type' => 'Text',
             'attributes' => array(
                 'id' => 'cf-options',
-                'style' => 'width: 250px;',
+                'style' => 'width: 200px;',
                 'value' => '1,2,3,4,5,6,7,8,9,10',
             ),
             'options' => array(
