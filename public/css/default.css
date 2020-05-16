@@ -746,7 +746,7 @@ option { padding-right: 16px; }
     #calendar-toolbar table tr td { padding-right: 0 }
 
     #calendar-toolbar-datepicker table tr td {
-        padding-right: 10px;
+        padding-right: 7px;
     }
 
     #calendar-toolbar-userpanel table tr td {
