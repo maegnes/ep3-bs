@@ -743,7 +743,11 @@ option { padding-right: 16px; }
 
 @media screen and (max-width: 576px) {
 
-    #calendar-toolbar table td { padding-right: 0 }
+    #calendar-toolbar table tr td { padding-right: 0 }
+
+    #calendar-toolbar-datepicker table tr td {
+        padding-right: 10px;
+    }
 
     #calendar-toolbar-userpanel table tr td {
         display: block;
