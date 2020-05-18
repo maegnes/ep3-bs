@@ -21,6 +21,12 @@ class TimeTable extends AbstractHelper
         for ($walkingTime = $timeStart; $walkingTime < $timeEnd; $walkingTime += $timeBlock) {
             $html .= '<tr class="calendar-core-row"><td>';
 
+            $now = new \DateTime();
+            $from = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime));
+            $to = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime + $timeBlock));
+
+            $active = ($now >= $from && $now < $to);
+
             $html .= sprintf('<div class="cts-label">%s</div> <div class="cte-label">%s %s</div>',
                 $view->timeFormat($walkingTime, false, 'UTC'), $view->translate('to'), $view->timeFormat($walkingTime + $timeBlock, true, 'UTC', true));
 
