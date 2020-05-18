@@ -249,8 +249,11 @@ a#logo:active { top: 1px; }
 .calendar-square-row td { height: 28px; }
 .calendar-core-row td { height: 30px; }
 
-.calendar-date-row td.active {
-    background-color: #ddd;
+
+@media screen and (min-width:768px) {
+    .calendar-date-row td.active {
+        background-color: #ddd;
+    }
 }
 
 .cts-label, .day-label, .square-label { font-weight: bold; }
