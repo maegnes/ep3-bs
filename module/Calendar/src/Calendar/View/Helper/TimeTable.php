@@ -25,6 +25,8 @@ class TimeTable extends AbstractHelper
             $to = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime + $timeBlock), new \DateTimeZone('Europe/Berlin'));
             $active = ($now->format('H') >= $from->format('H') && $now->format('H') < $to->format('H'));
 
+            var_dump($now->format('H'), $from->format('H'), $to->format('H'));
+
             $html .= sprintf('<tr class="calendar-core-row%s"><td>', ($active) ? ' active' : '');
 
             $html .= sprintf('<div class="cts-label">%s</div> <div class="cte-label">%s %s</div>',
