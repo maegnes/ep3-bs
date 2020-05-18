@@ -19,14 +19,7 @@ class TimeTable extends AbstractHelper
             $view->option('subject.square.type'));
 
         for ($walkingTime = $timeStart; $walkingTime < $timeEnd; $walkingTime += $timeBlock) {
-
-            $now = new \DateTime('now', new \DateTimeZone('Europe/Berlin'));
-            $from = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime), new \DateTimeZone('Europe/Berlin'));
-            $to = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime + $timeBlock), new \DateTimeZone('Europe/Berlin'));
-            $active = ($now->format('H') >= $from->format('H') && $now->format('H') <= $to->format('H'));
-
-            $html .= sprintf('<tr class="calendar-core-row%s"><td>', ($active) ? ' active' : '');
-
+            $html .= '<tr class="calendar-core-row"><td>';
             $html .= sprintf('<div class="cts-label">%s</div> <div class="cte-label">%s %s</div>',
                 $view->timeFormat($walkingTime, false, 'UTC'), $view->translate('to'), $view->timeFormat($walkingTime + $timeBlock, true, 'UTC', true));
 
