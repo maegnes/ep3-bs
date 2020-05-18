@@ -20,8 +20,10 @@ class TimeTable extends AbstractHelper
 
         for ($walkingTime = $timeStart; $walkingTime < $timeEnd; $walkingTime += $timeBlock) {
 
-            $now = $view->timeFormat(time(), false, 'UTC');
-            $active = ($now == $view->timeFormat($walkingTime, false, 'UTC'));
+            $now = new \DateTime('now', new \DateTimeZone('Europe/Berlin'));
+            $from = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime), new \DateTimeZone('Europe/Berlin'));
+            $to = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d H:i', $walkingTime + $timeBlock), new \DateTimeZone('Europe/Berlin'));
+            $active = ($now->format('H') >= $from->format('H') && $now->format('H') < $to->format('H'));
 
             $html .= sprintf('<tr class="calendar-core-row%s"><td>', ($active) ? ' active' : '');
 
