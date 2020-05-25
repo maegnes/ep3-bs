@@ -18,7 +18,7 @@ class DetermineDate extends AbstractPlugin
             $passedDate = $controller->params()->fromQuery('date');
 
             if (! $passedDate) {
-                if ($controller->cookie()->get('calendar-date')) {
+                if ($controller->cookie()->get('calendar-date') && 1==2) {
                     $passedDate = $controller->cookie()->get('calendar-date');
                 } else {
                     $passedDate = 'now';
