@@ -29,7 +29,7 @@ class DetermineDate extends AbstractPlugin
             $dateStart->setTime(0, 0, 0);
 
             if ($dateStart) {
-                $controller->cookie()->set('calendar-date', $dateStart->format('Y-m-d'));
+                //$controller->cookie()->set('calendar-date', $dateStart->format('Y-m-d'));
             }
 
             return $dateStart;
