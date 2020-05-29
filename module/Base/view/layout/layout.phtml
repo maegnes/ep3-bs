@@ -2,6 +2,12 @@
 <html lang="<?= $this->config('i18n.locale') ?>">
     <head>
         <meta charset="utf-8">
+        <link rel="manifest" href="<?= $this->basePath('manifest.json');?>">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="TSG Buchung">
+        <meta name="apple-mobile-web-app-title" content="TSG Buchung">
+        <meta name="msapplication-starturl" content="/">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
         <meta name="format-detection" content="telephone=no">
         <meta name="generator" content="<?= $this->option('service.branding.name') ?>">
