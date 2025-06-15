@@ -96,7 +96,6 @@ code {
     display: block;
     width: 75px; height: 75px;
     opacity: 1.0;
-    background: url("../imgs-client/layout/logo.png") no-repeat center center;
 }
 
 a#logo:active { top: 1px; }
