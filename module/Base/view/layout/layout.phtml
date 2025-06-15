@@ -19,7 +19,9 @@
     <body>
         <div id="header" class="no-wrap no-print" <?= $this->headerAttributes() ?>>
             <div id="label">
-                <a href="<?= $this->basePath('/') ?>" id="logo"></a>
+                <a href="<?= $this->basePath('/') ?>">
+                    <img src="<?= $this->basePath('/imgs-client/layout/logo.png') ?>"/>
+                </a>
                 <div id="label-client"><?= $this->option('client.name.full') ?></div>
                 <div id="label-service"><?= $this->option('service.name.full') ?></div>
                 <style type="text/css"> #label-client { margin-top: 15px; } </style>
