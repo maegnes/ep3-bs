@@ -32,6 +32,15 @@ $this->setup(array(
         <?= $this->partial('square/square/index.free.phtml', $this->vars()) ?>
     <?php else: ?>
         <?= $this->partial('square/square/index.occupied.phtml', $this->vars()) ?>
+        <?php
+        $bookings = array_values($this->bookings);
+        $note = $bookings[0]->getMeta('notes', '');
+        if (strstr($note, 'VM')) {
+            echo '<div class="cc-vm" style="padding: 10px;">';
+            echo '<b>Spiel der Vereinsmeisterschaft!</b><br>' . $note;
+            echo '</div>';
+        }
+        ?>
     <?php endif; ?>
 
     <?php
