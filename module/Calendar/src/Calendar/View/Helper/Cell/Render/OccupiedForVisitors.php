@@ -37,6 +37,10 @@ class OccupiedForVisitors extends AbstractHelper
 
             $cellGroup = ' cc-group-' . $booking->need('bid');
 
+            if ($cellVM !== '') {
+                $cellLabel .= ' (VM)';
+            }
+
             switch ($booking->need('status')) {
                 case 'single':
                     if (! $cellLabel) {

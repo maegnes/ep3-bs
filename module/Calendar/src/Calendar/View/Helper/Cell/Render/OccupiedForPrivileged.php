@@ -28,6 +28,12 @@ class OccupiedForPrivileged extends AbstractHelper
             $booking = $reservation->needExtra('booking');
             $bookingStatusColor = $this->bookingStatusService->getStatusColor($booking->getBillingStatus());
 
+            if (strstr($booking->getMeta('notes', ''),'VM') !== false) {
+                $cellVM = ' cc-vm';
+            } else {
+                $cellVM = '';
+            }
+
             if ($bookingStatusColor) {
                 $cellStyle = 'outline: solid 3px ' . $bookingStatusColor;
             } else {
@@ -35,7 +41,12 @@ class OccupiedForPrivileged extends AbstractHelper
             }
 
             $cellLabel = $booking->needExtra('user')->need('alias');
+            if ($cellVM !== '') {
+                $cellLabel .= ' (VM)';
+            }
+
             $cellGroup = ' cc-group-' . $booking->need('bid');
+            $cellGroup .= $cellVM;
 
             switch ($booking->need('status')) {
                 case 'single':
