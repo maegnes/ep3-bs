@@ -15,10 +15,17 @@ class OccupiedForVisitors extends AbstractHelper
         $reservationsCount = count($reservations);
 
         if ($reservationsCount > 1) {
+            die();
             return $view->calendarCellLink($this->view->t('Occupied'), $view->url('square', [], $cellLinkParams), 'cc-single');
         } else {
             $reservation = current($reservations);
             $booking = $reservation->needExtra('booking');
+
+            if (strstr($booking->getMeta('notes', ''),'VM') !== false) {
+                $cellVM = ' cc-vm';
+            } else {
+                $cellVM = '';
+            }
 
             if ($square->getMeta('public_names', 'false') == 'true') {
                 $cellLabel = $booking->needExtra('user')->need('alias');
@@ -36,13 +43,13 @@ class OccupiedForVisitors extends AbstractHelper
                         $cellLabel = $this->view->t('Occupied');
                     }
 
-                    return $view->calendarCellLink($view->escapeHtml($cellLabel), $view->url('square', [], $cellLinkParams), 'cc-single' . $cellGroup);
+                    return $view->calendarCellLink($view->escapeHtml($cellLabel), $view->url('square', [], $cellLinkParams), 'cc-single' . $cellGroup . $cellVM);
                 case 'subscription':
                     if (! $cellLabel) {
                         $cellLabel = $this->view->t('Subscription');
                     }
 
-                    return $view->calendarCellLink($view->escapeHtml($cellLabel), $view->url('square', [], $cellLinkParams), 'cc-multiple' . $cellGroup);
+                    return $view->calendarCellLink($view->escapeHtml($cellLabel), $view->url('square', [], $cellLinkParams), 'cc-multiple' . $cellGroup . $cellVM);
             }
         }
     }
