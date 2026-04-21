@@ -8,6 +8,11 @@ div.cc-vm {
     color: #ffffff ! important;
 }
 
+tr.is-today {
+    background-color: #5179cf;
+    color: #ffffff;
+}
+
 a.cc-event:link,
 a.cc-event:visited { background-color: #975459; }
 a.cc-event:hover { background-color: #6A3333; }

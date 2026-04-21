@@ -16,8 +16,24 @@ class DateRow extends AbstractHelper
         $dayName = current(preg_split('/,|\s/', $view->dateFormat($date, IntlDateFormatter::FULL)));
         $dateFormat = $view->dateFormat($date, IntlDateFormatter::LONG);
 
-        return sprintf('<tr class="calendar-date-row %s"><td colspan="%s"><div class="day-label">%s</div><div class="date-label">%s</div></td></tr>',
-            $outerClasses, $colspan, $dayName, $dateFormat);
+        $dateFormatShort = $view->dateFormat($date, IntlDateFormatter::MEDIUM);
+        
+        $isTodayClass = '';
+        $isToday = false;
+
+        if ($dateFormatShort === date('d.m.Y', time())) {
+            $isTodayClass = 'is-today ';
+            $isToday = true;
+        }
+
+        return sprintf(
+            '<tr class="calendar-date-row %s%s"><td colspan="%s"><div class="day-label">%s</div><div class="date-label">%s</div></td></tr>',
+            $isTodayClass,
+            $outerClasses,
+            $colspan,
+            $isToday ? $dayName . ' (Heute)' : $dayName,
+            $dateFormat
+        );
     }
 
 }
