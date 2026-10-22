@@ -3,6 +3,7 @@
 namespace Square\Controller;
 
 use Booking\Entity\Booking\Bill;
+use DateTime;
 use RuntimeException;
 use Zend\Json\Json;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -54,8 +55,11 @@ class BookingController extends AbstractActionController
 
         $serviceManager = @$this->getServiceLocator();
         $squareValidator = $serviceManager->get('Square\Service\SquareValidator');
+        $bookingTypeService = $serviceManager->get('Booking\Service\BookingTypeService');
 
         $byproducts = $squareValidator->isBookable($dateStartParam, $dateEndParam, $timeStartParam, $timeEndParam, $squareParam);
+
+        $byproducts['bookingTypeTitles'] = $bookingTypeService->getTypeTitles();
 
         $user = $byproducts['user'];
 
@@ -136,8 +140,8 @@ class BookingController extends AbstractActionController
             $playerNames = Json::decode($playerNamesParam, Json::TYPE_ARRAY);
 
             foreach ($playerNames as $playerName) {
-                if (strlen(trim($playerName['value'])) < 5 || strpos(trim($playerName['value']), ' ') === false) {
-                    throw new \RuntimeException('Die <b>vollständigen Vor- und Nachnamen</b> der anderen Spieler sind erforderlich');
+                if (strlen(trim($playerName['value'])) < 5 || ! str_contains(trim($playerName['value']), ' ')) {
+                    throw new RuntimeException('Die <b>vollständigen Vor- und Nachnamen</b> der anderen Spieler sind erforderlich');
                 }
             }
         } else {
@@ -187,10 +191,24 @@ class BookingController extends AbstractActionController
                     $userNotes = '';
                 }
 
+                $type = $this->params()->fromPost('bf-type');
+
+                if (! ($type && $bookingTypeService->checkType($type))) {
+                    $type = null;
+                }
+
+                if ($square->getMeta('allow-custom-name', 'false') == 'true') {
+                    $customName = trim($this->params()->fromPost('bf-custom-name'));
+                } else {
+                    $customName = null;
+                }
+
                 $bookingService = $serviceManager->get('Booking\Service\BookingService');
                 $bookingService->createSingle($user, $square, $quantityParam, $byproducts['dateStart'], $byproducts['dateEnd'], $bills, array(
                     'player-names' => serialize($playerNames),
                     'notes' => $userNotes,
+                    'type' => $type,
+                    'custom-name' => $customName,
                 ));
 
                 $this->flashMessenger()->addSuccessMessage(sprintf($this->t('%sCongratulations:%s Your %s has been booked!'),
@@ -243,6 +261,88 @@ class BookingController extends AbstractActionController
         return $this->ajaxViewModel(array(
             'bid' => $bid,
             'origin' => $origin,
+        ));
+    }
+
+    public function reservationCancellationAction()
+    {
+        $rid = $this->params()->fromQuery('rid');
+
+        if (! (is_numeric($rid) && $rid > 0)) {
+            throw new RuntimeException('This reservation does not exist');
+        }
+
+        $serviceManager = @$this->getServiceLocator();
+        $bookingManager = $serviceManager->get('Booking\Manager\BookingManager');
+        $reservationManager = $serviceManager->get('Booking\Manager\ReservationManager');
+        $squareValidator = $serviceManager->get('Square\Service\SquareValidator');
+
+        $reservation = $reservationManager->get($rid);
+        $booking = $bookingManager->get($reservation->need('bid'));
+
+        if (! $squareValidator->isReservationCancellable($booking)) {
+            throw new RuntimeException('This reservation cannot be cancelled.');
+        }
+
+        $date = $reservation->need('date');
+        $reservationStart = new DateTime($date . ' ' . $reservation->need('time_start'));
+        $timeEnd = $reservation->need('time_end');
+        $reservationEnd = new DateTime($date . ' ' . ($timeEnd == '00:00:00' || $timeEnd == '00:00' ? '24:00:00' : $timeEnd));
+
+        $selectedStart = null;
+        $selectedEnd = null;
+        $startParam = $this->params()->fromQuery('start');
+        $endParam = $this->params()->fromQuery('end');
+
+        if ($startParam !== null || $endParam !== null) {
+            foreach ([$startParam, $endParam] as $param) {
+                if (! is_string($param)) {
+                    throw new RuntimeException('The passed time range is invalid');
+                }
+
+                $parsed = DateTime::createFromFormat('!Y-m-d H:i:s', $param);
+
+                if (! $parsed || $parsed->format('Y-m-d H:i:s') !== $param) {
+                    throw new RuntimeException('The passed time range is invalid');
+                }
+            }
+
+            $selectedStart = max($reservationStart, new DateTime($startParam));
+            $selectedEnd = min($reservationEnd, new DateTime($endParam));
+
+            if ($selectedStart >= $selectedEnd) {
+                throw new RuntimeException('The passed time range is invalid');
+            }
+        }
+
+        $partial = $selectedStart && ($selectedStart > $reservationStart || $selectedEnd < $reservationEnd);
+        $origin = $this->redirectBack()->getOriginAsUrl();
+
+        if ($this->params()->fromQuery('confirmed') == 'true') {
+            if ($this->params()->fromQuery('scope') == 'selected') {
+                if (! $selectedStart) {
+                    throw new RuntimeException('The passed time range is invalid');
+                }
+
+                $reservationManager->cancelInRange($reservation, $selectedStart, $selectedEnd);
+            } else {
+                $reservationManager->delete($reservation);
+            }
+
+            $this->flashMessenger()->addSuccessMessage(sprintf($this->t('Your reservation has been %scancelled%s.'),
+                '<b>', '</b>'));
+
+            return $this->redirectBack()->toOrigin();
+        }
+
+        return $this->ajaxViewModel(array(
+            'rid' => $rid,
+            'origin' => $origin,
+            'reservationStart' => substr($reservation->need('time_start'), 0, 5),
+            'reservationEnd' => $reservationEnd->format('Y-m-d') == $date ? $reservationEnd->format('H:i') : '24:00',
+            'selectedStart' => $selectedStart,
+            'selectedEnd' => $selectedEnd,
+            'partial' => $partial,
         ));
     }
 
